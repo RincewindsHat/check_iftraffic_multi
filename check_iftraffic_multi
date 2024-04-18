@@ -128,7 +128,7 @@
    use File::Path qw(make_path);
    use Net::SNMP;
    use Net::DNS;
-   use Nagios::Plugin;
+   use Monitoring::Plugin;
    use Getopt::Long;
    &Getopt::Long::config('bundling');
    use Data::Dumper;
@@ -596,7 +596,7 @@ sub nagios_report {
       $uom			= $suffix;
    }
    # Create a Nagios object
-   my $np = Nagios::Plugin->new(shortname => "IFTRAFFIC");
+   my $np = Monitoring::Plugin->new(shortname => "IFTRAFFIC");
 
    foreach my $key (sort keys(%nagios_hash)){
 
@@ -783,15 +783,15 @@ sub nagios_exit {
    $message = $status . ": " . $message;
 
    if ($status eq "UNKNOWN"){
-      my $np = Nagios::Plugin->new(shortname => "UNKNOWN");
+      my $np = Monitoring::Plugin->new(shortname => "UNKNOWN");
       $np->nagios_exit(UNKNOWN, $message);
    }
    elsif ($status eq "WARNING"){
-      my $np = Nagios::Plugin->new(shortname => "WARNING");
+      my $np = Monitoring::Plugin->new(shortname => "WARNING");
       $np->nagios_exit( WARNING, $message )
    }
    elsif ($status eq "CRITICAL"){
-      my $np = Nagios::Plugin->new(shortname => "CRITICAL");
+      my $np = Monitoring::Plugin->new(shortname => "CRITICAL");
       $np->nagios_exit( CRITICAL, $message )
    }
 }
