@@ -142,7 +142,6 @@ sub main{
    my $do_percent	= 1;
    my $do_nopercent	= 0;
    my $iface_number;
-   my $interface_ip;
    my $iface_descr;
    my $iface_speed;
    my $iface_speedOut;
